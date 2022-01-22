@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Quote</title>
+</head>
+<body>
+    <div class="container">
+        <div class="quote-box">
+            <p id="text">"NewQuotes"</p>
+            <small id="author">author</small>
+        </div>
+        <button id="btn">Generate New Quotes</button>
+    </div>
+    
+    <script>
+        const text = document.querySelector("#text");
+        const author = document.querySelector("#author");
+        const btn = document.querySelector("#btn");
+
+        btn.addEventListener("click, getQuote");
+
+        function getQuote(){
+            fetch("https://goquotes-api.herokuapp.com/api/v1/all/quotes")
+            .then(res => res.json())
+            .then(data => { 
+                quote.innerHTML=`"${data.text}"`;
+                author.innerHTML = data.author
+            })
+        }
+        
+    </script>
+</body>
+</html>
